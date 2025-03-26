@@ -118,7 +118,7 @@ specification. Contributions of any kind welcome!
 <br />
 
 <div align="center">
-<img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-banner.png" width="100%" alt="Storm Software" />
+<img src="https://public.storm-cdn.com/brand-banner.png" width="100%" alt="Storm Software" />
 </div>
 <br />
 
@@ -127,7 +127,7 @@ specification. Contributions of any kind welcome!
 </div>
 
 <div align="center">
-<b>Fingerprint:</b> 1BD2 7192 7770 2549 F4C9 F238 E6AD C420 DA5C 4C2D
+<b>Fingerprint:</b> F47F 1853 BCAD DE9B 42C8  6316 9FDE EC95 47FE D106
 </div>
 <br />
 
@@ -145,13 +145,14 @@ receive release notifications, ask questions, and get involved.
 If this sounds interesting, and you would like to help us in creating the next
 generation of development tools, please reach out on our
 [website](https://stormsoftware.com/contact) or join our
-[Slack channel](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA)!
+[Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA)
+channel!
 
 <br />
 
-<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" alt="Storm Software" width="200px"/></a></div>
+<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://public.storm-cdn.com/icon-fill.png" alt="Storm Software" width="200px"/></a></div>
 <br />
-<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/visit-us-text.svg" alt="Visit us at stormsoftware.com" height="90px"/></a></div>
+<div align="center"><a href="https://stormsoftware.com" target="_blank"><img src="https://public.storm-cdn.com/visit-us-text.svg" alt="Visit us at stormsoftware.com" height="90px"/></a></div>
 
 <br />
 

@@ -1,6 +1,7 @@
-/*-------------------------------------------------------------------
+#!/usr/bin/env zx
+/* -------------------------------------------------------------------
 
-            ⚡ Storm Software - Monorepo Template
+                 ⚡ Storm Software - Monorepo Template
 
  This code was released as part of the Monorepo Template project. Monorepo Template
  is maintained by Storm Software under the Apache-2.0 License, and is
@@ -13,27 +14,72 @@
  Contact:         https://stormsoftware.com/contact
  License:         https://stormsoftware.com/projects/monorepo-template/license
 
- -------------------------------------------------------------------*/
+ ------------------------------------------------------------------- */
 
-import { $, chalk, echo, usePwsh } from "zx";
+ import { $, chalk, echo, usePwsh } from "zx";
 
-usePwsh();
+ // eslint-disable-next-line react-hooks/rules-of-hooks
+ usePwsh();
 
-try {
-  await $`pnpm nx clear-cache`;
-  await $`pnpm exec rimraf --no-interactive -- ./.nx/cache ./.nx/workspace-data ./dist ./tmp ./pnpm-lock.yaml`.timeout(
-    `${5 * 60}s`
-  );
-  await $`pnpm exec rimraf --no-interactive --glob "./*/**/{node_modules,dist}" `.timeout(
-    `${5 * 60}s`
-  );
-  await $`pnpm exec rimraf --no-interactive --glob "node_modules/!rimraf/**" `.timeout(
-    `${5 * 60}s`
-  );
+ try {
+   await echo`${chalk.whiteBright("💣  Nuking the monorepo...")}`;
 
-  echo`${chalk.green("Successfully nuked the cache, node_modules, and dist folders")}`;
-} catch (error) {
-  echo`${chalk.red(`A failure occurred while nuking the monorepo:
-${error?.message ? error.message : "No message could be found"}
-`)}`;
-}
+   let proc = $`pnpm nx clear-cache`.timeout(`${5 * 60}s`);
+   proc.stdout.on("data", data => {
+     echo`${data}`;
+   });
+   let result = await proc;
+   if (!result.ok) {
+     throw new Error(
+       `An error occurred while clearing Nx cache: \n\n${result.message}\n`
+     );
+   }
+
+   proc =
+     $`pnpm exec rimraf --no-interactive -- ./.nx/cache ./.nx/workspace-data ./dist ./tmp ./pnpm-lock.yaml`.timeout(
+       `${5 * 60}s`
+     );
+   proc.stdout.on("data", data => {
+     echo`${data}`;
+   });
+   result = await proc;
+   if (!result.ok) {
+     throw new Error(
+       `An error occurred while removing cache directories: \n\n${result.message}\n`
+     );
+   }
+
+   proc =
+     $`pnpm exec rimraf --no-interactive --glob "*/**/{node_modules,dist,.storm,.next}`.timeout(
+       `${5 * 60}s`
+     );
+   proc.stdout.on("data", data => {
+     echo`${data}`;
+   });
+   result = await proc;
+   if (!result.ok) {
+     throw new Error(
+       `An error occurred while removing node modules and build directories from the monorepo's projects: \n\n${result.message}\n`
+     );
+   }
+
+   proc =
+     $`pnpm exec rimraf --no-interactive --glob "./node_modules/!rimraf/**"`.timeout(
+       `${5 * 60}s`
+     );
+   proc.stdout.on("data", data => {
+     echo`${data}`;
+   });
+   result = await proc;
+   if (!result.ok) {
+     throw new Error(
+       `An error occurred while removing node modules from the workspace root: \n\n${result.message}\n`
+     );
+   }
+
+   echo`${chalk.green("Successfully nuked the cache, node modules, and build folders")}`;
+ } catch (error) {
+   echo`${chalk.red(error?.message ? error.message : "A failure occurred while nuking the monorepo")}`;
+
+   process.exit(1);
+ }
