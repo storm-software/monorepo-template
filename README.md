@@ -31,7 +31,7 @@ keeping the codebase maintainable.
 <!-- markdownlint-disable -->
 
 > [!IMPORTANT] 
-> This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.
+> This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be available through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -39,7 +39,6 @@ keeping the codebase maintainable.
 <div align="center">
 <b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
 </div>
-
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -75,7 +74,6 @@ keeping the codebase maintainable.
 # Quick Features
 
 This section contains a quick overview of the features and functionality of the repository.
-
 
 ## Visual Studio Code Extension
 
