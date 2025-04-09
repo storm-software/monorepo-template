@@ -7,7 +7,7 @@
       "executor": "@nx/js:verdaccio",
       "options": {
         "port": 4873,
-        "config": ".verdaccio/config.yml",
+        "config": "tools/config/verdaccio.yml",
         "storage": "tmp/local-registry/storage"
       }
     }
