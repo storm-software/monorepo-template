@@ -1,6 +1,6 @@
 /* -------------------------------------------------------------------
 
-                 ⚡ Storm Software - Monorepo Template
+            ⚡ Storm Software - Monorepo Template
 
  This code was released as part of the Monorepo Template project. Monorepo Template
  is maintained by Storm Software under the Apache-2.0 License, and is
@@ -15,14 +15,11 @@
 
  ------------------------------------------------------------------- */
 
- import { getStormConfig } from "@storm-software/eslint";
+import { getStormConfig } from "@storm-software/eslint";
 
- Error.stackTraceLimit = Number.POSITIVE_INFINITY;
+Error.stackTraceLimit = Number.POSITIVE_INFINITY;
 
- /** @type {import('eslint').Linter.Config[]} */
- export default getStormConfig({
-   repositoryName: "monorepo-template",
-   pnpm: {
-     ignore: ["typescript"]
-   }
- });
+/** @type {import('eslint').Linter.Config[]} */
+export default getStormConfig({
+  repositoryName: "monorepo-template"
+});

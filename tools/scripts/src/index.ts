@@ -1,6 +1,6 @@
-/*-------------------------------------------------------------------
+/* -------------------------------------------------------------------
 
-                       ⚡ Storm Software - Monorepo Template
+            ⚡ Storm Software - Monorepo Template
 
  This code was released as part of the Monorepo Template project. Monorepo Template
  is maintained by Storm Software under the Apache-2.0 License, and is
@@ -13,7 +13,7 @@
  Contact:         https://stormsoftware.com/contact
  License:         https://stormsoftware.com/projects/monorepo-template/license
 
- -------------------------------------------------------------------*/
+ ------------------------------------------------------------------- */
 
 export * from "./bootstrap.mjs";
 export * from "./build.mjs";
