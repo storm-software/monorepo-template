@@ -10,6 +10,8 @@ on:
     paths:
       - .github/labels.yml
 
+permissions: {}
+
 env:
   CI: true
   NX_DAEMON: false

@@ -6,6 +6,8 @@ on:
     - cron: "0 9 * * *"
   workflow_dispatch:
 
+permissions: {}
+
 env:
   CI: true
   SKIP_ENV_VALIDATION: true

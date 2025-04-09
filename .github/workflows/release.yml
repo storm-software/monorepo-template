@@ -12,6 +12,8 @@ on:
       - canary
       - experimental
 
+permissions: {}
+
 env:
   CI: true
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
@@ -20,7 +22,6 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
   CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
-  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
   start:
