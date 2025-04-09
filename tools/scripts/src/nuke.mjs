@@ -19,7 +19,7 @@
 import { $, chalk, echo } from "zx";
 
 try {
-  await echo`${chalk.whiteBright("💣  Nuking the monorepo...")}`;
+  echo`${chalk.whiteBright("💣  Nuking the monorepo...")}`;
 
   let proc = $`pnpm nx clear-cache`.timeout(`${5 * 60}s`);
   proc.stdout.on("data", data => {

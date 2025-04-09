@@ -19,7 +19,7 @@
 import { chalk, echo } from "zx";
 
 try {
-  await echo`${chalk.whiteBright("⚙️  Bootstrapping the monorepo...")}`;
+  echo`${chalk.whiteBright("⚙️  Bootstrapping the monorepo...")}`;
 
   //   await build({
   //     entryPoints: [

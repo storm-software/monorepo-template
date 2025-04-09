@@ -19,7 +19,7 @@
 import { $, chalk, echo } from "zx";
 
 try {
-  await echo`${chalk.whiteBright("📋  Linting the monorepo...")}`;
+  echo`${chalk.whiteBright("📋  Linting the monorepo...")}`;
 
   let proc =
     $`pnpm nx run-many --target=lint --all --exclude="@monorepo-template/monorepo" --parallel=5`.timeout(
