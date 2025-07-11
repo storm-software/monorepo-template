@@ -1,9 +1,61 @@
 {
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "search.exclude": {
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.tamagui": true,
+    "**/.next/**": true,
+    "**/.next-dev/**": true,
+    "**/dist/**": true,
+    "**/dist-dev/**": true,
+    "**/.docusaurus/**": true,
+    "**/CHANGELOG.json": true,
+    "docs/spec.html": true,
+    "**/node_modules/**": true,
+    "**/.tsbuildinfo": true,
+    "packages/compiler/templates/__snapshots__/**": true,
+    "packages/website/versioned_docs/**": true,
+    "packages/http-client-csharp/**/Generated/**": true,
+    "packages/samples/scratch/**": false // Those files are in gitignore but we still want to search for them
+  },
+  "files.exclude": {
+    "**/common/temp/**": true,
+    "**/obj/**": true,
+    "**/bin/**": true,
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
   "relay.autoStartCompiler": true,
   "relay.rootDirectory": "../",
   "relay.pathToConfig": "../packages/graphql-tools/config/relay.config.js",
   "rust-analyzer.procMacro.ignored": {
     "napi-derive": ["napi"]
+  },
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd", // or "nil"
+  "nix.serverSettings": {
+    // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"]
+      },
+      "options": {
+        // By default, this entry will be read from `import <nixpkgs> { }`.
+        // You can write arbitrary Nix expressions here, to produce valid "options" declaration result.
+        // Tip: for flake-based configuration, utilize `builtins.getFlake`
+        "nixos": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").nixosConfigurations.<name>.options"
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").homeConfigurations.<name>.options"
+        },
+        // Tip: use ${workspaceFolder} variable to define path
+        "nix-darwin": {
+          "expr": "(builtins.getFlake \"${workspaceFolder}/flake.nix\").darwinConfigurations.<name>.options"
+        }
+      }
+    }
   },
   "json.schemas": [
     {
@@ -22,14 +74,6 @@
   "yaml.schemas": {
     "url": "https://json.schemastore.org/github-action.json",
     "fileMatch": [".github/actions/setup/action.yml"]
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/*.code-search": true,
-    "**/.tamagui": true,
-    "**/.next": true,
-    "**/dist": true
   },
   "workbench.colorCustomizations": {
     "statusBar.background": "#1d232a",
@@ -50,10 +94,9 @@
   "prettier.bracketSameLine": true,
   "prettier.configPath": "./node_modules/@storm-software/prettier/config.json",
   "prettier.ignorePath": "./node_modules/@storm-software/prettier/.prettierignore",
-  "prettier.enableDebugLogs": true,
-  "markdownlint.config": {
-    "extends": "./node_modules/@storm-software/markdownlint/config/config.json"
-  },
+  "prettier.enableDebugLogs": false,
+  "prettier.enable": true,
+  "markdownlint.configFile": "./node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc",
   "eslint.debug": false,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
@@ -62,10 +105,15 @@
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
+  "eslint.useFlatConfig": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.tabCompletion": "on",
   "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.hbs": "handlebars",
@@ -74,7 +122,7 @@
   },
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "quickfix.biome": "explicit",
@@ -110,7 +158,7 @@
   },
   "[json]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.formatOnSave": true,
@@ -142,6 +190,10 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
   "[toml]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "tamasfe.even-better-toml"
@@ -150,15 +202,12 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "[rust]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "rust-lang.rust-analyzer"
-  },
   "[css]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
-  "commitizen.showOutputChannel": "always"
+  "commitizen.showOutputChannel": "always",
+  "nxConsole.generateAiAgentRules": true
 }

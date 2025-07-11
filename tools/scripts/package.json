@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
+    "@storm-software/config-tools": "catalog:",
     "esbuild": "catalog:"
   },
   "devDependencies": {

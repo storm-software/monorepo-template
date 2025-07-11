@@ -9,6 +9,8 @@ tmp
 /out-tsc
 out
 .nx
+**/.storm
+# \!examples/**/.storm
 
 # build
 
@@ -31,6 +33,7 @@ node_modules
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/cspell.json
+!.vscode/mcp.json
 
 # misc
 /.sass-cache
@@ -100,6 +103,7 @@ bld/
 # [Bb]in/
 [Oo]bj/
 [Ll]og/
+!packages/[Ll]og
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -129,7 +133,6 @@ BenchmarkDotNet.Artifacts/
 # .NET Core
 project.lock.json
 project.fragment.lock.json
-artifacts/
 
 # StyleCop
 StyleCopReport.xml
@@ -329,7 +332,7 @@ ServiceFabricBackup/
 *.bim.layout
 *.bim_*.settings
 *.rptproj.rsuser
-*- [Bb]ackup*.rdl
+*- [Bb]ackup.rdl
 
 # Microsoft Fakes
 FakesAssemblies/
@@ -423,3 +426,26 @@ MigrationBackup/
 
 # Sentry Auth Token
 .sentryclirc
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

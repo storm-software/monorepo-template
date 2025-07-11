@@ -4,13 +4,11 @@ on:
   push:
     branches:
       - main
-      - canary
+      - next
       - experimental
   pull_request:
     branches:
       - "**"
-
-permissions: {}
 
 jobs:
   scanning:
@@ -24,7 +22,11 @@ jobs:
           persist-credentials: false
 
       - name: GitGuardian scan
-        uses: GitGuardian/ggshield/actions/secret@v1.36.0
+        uses: GitGuardian/ggshield/actions/secret@v1.39.0
+        with:
+          args:
+            "--exclude pnpm-lock.yaml --exclude tools/config/verdaccio.yml
+            --exclude nx.json"
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}

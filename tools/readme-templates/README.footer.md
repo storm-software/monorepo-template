@@ -12,8 +12,8 @@ maintainable.
 
 ## Roadmap
 
-See the [open issues](https://github.com/storm-software/monorepo-template/issues) for a
-list of proposed features (and known issues).
+See the [open issues](https://github.com/storm-software/monorepo-template/issues) for
+a list of proposed features (and known issues).
 
 - [Top Feature Requests](https://github.com/storm-software/monorepo-template/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc)
   (Add your votes using the 👍 reaction)
@@ -73,8 +73,8 @@ Please try to create bug reports that are:
 Please adhere to this project's [code of conduct](.github/CODE_OF_CONDUCT.md).
 
 You can use
-[markdownlint-cli](https://github.com/storm-software/monorepo-template/markdownlint-cli) to
-check for common markdown style inconsistency.
+[markdownlint-cli](https://github.com/storm-software/monorepo-template/markdownlint-cli)
+to check for common markdown style inconsistency.
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
@@ -127,7 +127,7 @@ specification. Contributions of any kind welcome!
 </div>
 
 <div align="center">
-<b>Fingerprint:</b> F47F 1853 BCAD DE9B 42C8  6316 9FDE EC95 47FE D106
+<b>Fingerprint:</b> 1BD2 7192 7770 2549 F4C9 F238 E6AD C420 DA5C 4C2D
 </div>
 <br />
 
@@ -145,8 +145,7 @@ receive release notifications, ask questions, and get involved.
 If this sounds interesting, and you would like to help us in creating the next
 generation of development tools, please reach out on our
 [website](https://stormsoftware.com/contact) or join our
-[Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA)
-channel!
+[Slack channel](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA)!
 
 <br />
 

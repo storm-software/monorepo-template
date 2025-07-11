@@ -1,9 +1,10 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
-  "extends": "@storm-software/config/presets/base.json",
+  "$schema": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
+  "extends": "@storm-software/config/presets/storm-software.json",
   "name": "monorepo-template",
   "namespace": "monorepo-template",
   "repository": "https://github.com/storm-software/monorepo-template",
   "packageManager": "pnpm",
-  "logLevel": "trace"
+  "logLevel": "trace",
+  "docs": "https://docs.stormsoftware.com/projects/monorepo-template"
 }

@@ -20,58 +20,49 @@
 import { $, argv, chalk, echo } from "zx";
 
 try {
-  echo`${chalk.whiteBright("🎨  Formatting the monorepo...")}`;
-
-  let files = "";
-  if (argv._ && argv._.length > 0) {
-    files = `--files ${argv._.join(" ")}`;
+  let base = argv.base;
+  if (!base) {
+    base = process.env.NX_BASE;
+  }
+  let head = argv.head;
+  if (!head) {
+    head = process.env.NX_HEAD;
+  }
+  if (!base && !head) {
+    throw new Error(
+      `Base and head arguments are required. Please provide them using the --base and --head flags.`
+    );
   }
 
-  let proc =
-    $`pnpm exec storm-git readme --templates="tools/readme-templates" --project="@monorepo-template/monorepo"`.timeout(
-      `${30 * 60}s`
-    );
+  await echo`${chalk.whiteBright(`📦  Releasing workspace packages (Base tag: "${base}", Head tag: "${head}")`)}`;
+
+  let proc = $`pnpm build`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => {
     echo`${data}`;
   });
   let result = await proc;
   if (!result.ok) {
     throw new Error(
-      `An error occurred while formatting the workspace's README file: \n\n${result.message}\n`
+      `An error occurred while building workspace packages: \n\n${result.message}\n`
     );
   }
 
-  proc =
-    $`pnpm nx run-many --target=format --all --exclude="@monorepo-template/monorepo" --outputStyle=dynamic-legacy --parallel=5`.timeout(
-      `${30 * 60}s`
-    );
+  proc = $`pnpm exec storm-git release --base=${base} --head=${head}`.timeout(
+    `${30 * 60}s`
+  );
   proc.stdout.on("data", data => {
     echo`${data}`;
   });
   result = await proc;
   if (!result.ok) {
     throw new Error(
-      `An error occurred while formatting the monorepo: \n\n${result.message}\n`
+      `An error occurred while releasing workspace packages: \n\n${result.message}\n`
     );
   }
 
-  proc =
-    $`pnpm nx format:write ${files} --sort-root-tsconfig-paths --all`.timeout(
-      `${30 * 60}s`
-    );
-  proc.stdout.on("data", data => {
-    echo`${data}`;
-  });
-  result = await proc;
-  if (!result.ok) {
-    throw new Error(
-      `An error occurred while running \`nx format:write\` on the monorepo: \n\n${result.message}\n`
-    );
-  }
-
-  echo`${chalk.green("Successfully formatted the monorepo's files")}`;
+  echo`${chalk.green("Successfully released workspace packages")}`;
 } catch (error) {
-  echo`${chalk.red(error?.message ? error.message : "A failure occurred while formatting the monorepo")}`;
+  echo`${chalk.red(error?.message ? error.message : "A failure occurred while releasing workspace packages")}`;
 
   process.exit(1);
 }

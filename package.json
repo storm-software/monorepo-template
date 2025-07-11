@@ -2,7 +2,7 @@
   "name": "@monorepo-template/monorepo",
   "version": "0.0.1",
   "type": "module",
-  "description": "🌩️ A monorepo containing TypeScript utility packages with shared functionality common to many Storm Software applications.",
+  "description": "⚡ A monorepo containing TypeScript utility packages with shared functionality common to many Storm Software applications.",
   "repository": "storm-software/monorepo-template.git",
   "homepage": "https://stormsoftware.com",
   "bugs": {
@@ -20,24 +20,22 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
-    "node": ">=22.13.1",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.14.0",
+    "pnpm": ">=10.10.0"
   },
   "keywords": [
-    "stryke",
-    "typescript",
-    "utilities",
-    "storm-stack",
     "storm-software",
     "storm",
     "storm-ops",
-    "cyclone-ui",
     "sullivanpj",
+    "typescript",
     "monorepo"
   ],
   "scripts": {
+    "adr": "pnpm log4brains adr new",
+    "adr-preview": "pnpm log4brains preview",
     "bootstrap": "pnpm exec zx tools/scripts/src/bootstrap.mjs",
     "build": "pnpm exec zx tools/scripts/src/build.mjs --prod",
     "build-dev": "pnpm exec zx tools/scripts/src/build.mjs --dev",
@@ -48,16 +46,16 @@
     "format": "pnpm exec zx tools/scripts/src/format.mjs",
     "graph": "nx graph",
     "help": "nx help",
-    "install-csb": "corepack enable && pnpm install --no-frozen-lockfile",
     "lint": "pnpm exec zx tools/scripts/src/lint.mjs",
     "local-registry": "nx local-registry @monorepo-template/monorepo",
     "nuke": "pnpm exec zx tools/scripts/src/nuke.mjs",
     "nx": "nx",
     "postinstall": "pnpm bootstrap",
     "push": "git push origin main:main",
-    "release": "pnpm exec storm-git release",
+    "release": "pnpm exec zx tools/scripts/src/release.mjs",
     "sherif": "pnpm exec sherif -f -i typescript -i react -i react-dom",
     "start": "nx serve",
+    "update-storm": "pnpm exec zx tools/scripts/src/update-storm.mjs",
     "view-config": "pnpm exec storm-config"
   },
   "devDependencies": {
@@ -69,6 +67,7 @@
     "@nx/plugin": "catalog:",
     "@nx/workspace": "catalog:",
     "@storm-software/config": "catalog:",
+    "@storm-software/config-tools": "catalog:",
     "@storm-software/cspell": "catalog:",
     "@storm-software/esbuild": "catalog:",
     "@storm-software/eslint": "catalog:",
@@ -93,6 +92,7 @@
     "jest-environment-jsdom": "catalog:",
     "jest-environment-node": "catalog:",
     "lefthook": "catalog:",
+    "log4brains": "catalog:",
     "nx": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",
@@ -100,7 +100,7 @@
     "ts-jest": "catalog:",
     "ts-node": "catalog:",
     "tslib": "catalog:",
-    "typescript": "~5.7.3",
+    "typescript": "5.8.3",
     "verdaccio": "catalog:",
     "zx": "catalog:"
   },
