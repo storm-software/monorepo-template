@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "type": "module",
   "description": "⚡ A monorepo containing TypeScript utility packages with shared functionality common to many Storm Software applications.",
-  "repository": "storm-software/monorepo-template.git",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/monorepo-template.git"
+  },
   "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://stormsoftware.com/support",
