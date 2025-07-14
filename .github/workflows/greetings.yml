@@ -5,8 +5,8 @@ on:
   issues:
     branches:
       - main
-      - next
-      - experimental
+      - alpha
+      - beta
 
 permissions: {}
 

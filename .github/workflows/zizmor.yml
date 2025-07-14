@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-      - next
-      - experimental
+      - alpha
+      - beta
   pull_request:
     branches:
       - "**"

@@ -17,8 +17,8 @@ on:
   push:
     branches:
       - main
-      - next
-      - experimental
+      - alpha
+      - beta
     paths-ignore:
       - "**/*.md"
       - ".all-contributorsrc"
