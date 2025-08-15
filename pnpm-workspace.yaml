@@ -3,18 +3,18 @@ packages:
   - packages/*
   - docs/*
 catalog:
-  "@ls-lint/ls-lint": ^2.2.3
-  "@microsoft/api-extractor": ^7.49.2
+  "@ls-lint/ls-lint": ^2.3.1
+  "@microsoft/api-extractor": ^7.52.10
   "@taplo/cli": ^0.7.0
   "@types/jest": ^29.5.14
-  "@types/node": ^22.10.2
-  "@nx/devkit": 21.2.2
-  "@nx/eslint-plugin": 21.2.2
-  "@nx/jest": 21.2.2
-  "@nx/js": 21.2.2
-  "@nx/plugin": 21.2.2
-  "@nx/workspace": 21.2.2
-  "@storm-software/build-tools": 0.151.19
+  "@types/node": ^22.17.2
+  "@nx/devkit": 21.3.11
+  "@nx/eslint-plugin": 21.3.11
+  "@nx/jest": 21.3.11
+  "@nx/js": 21.3.11
+  "@nx/plugin": 21.3.11
+  "@nx/workspace": 21.3.11
+  "@storm-software/build-tools": 0.153.6
   "@storm-software/config": latest
   "@storm-software/config-tools": latest
   "@storm-software/cspell": latest
@@ -31,19 +31,19 @@ catalog:
   "@storm-software/tsdoc": latest
   "@storm-software/workspace-tools": latest
   "@swc-node/register": ^1.10.10
-  "@swc/core": ^1.11.22
-  "@swc/wasm": ^1.11.24
+  "@swc/core": ^1.13.3
+  "@swc/wasm": ^1.13.3
   "@swc/helpers": ^0.5.17
-  lefthook: ^1.11.12
+  lefthook: ^1.12.3
   log4brains: ^1.1.0
-  eslint: ^9.27.0
+  eslint: ^9.33.0
   prettier: ^3.6.2
   nx: 21.2.2
-  jest: ^30.0.0-beta.3
-  jest-environment-jsdom: ^30.0.0-beta.3
-  jest-environment-node: ^30.0.0-beta.3
-  sherif: ^1.0.0
-  ts-jest: ^29.2.5
+  jest: ^30.0.5
+  jest-environment-jsdom: ^30.0.5
+  jest-environment-node: ^30.0.5
+  sherif: ^1.6.1
+  ts-jest: ^29.4.1
   ts-node: ^10.9.2
   tsup: ^8.3.5
   tslib: ^2.8.1
@@ -54,11 +54,11 @@ catalog:
   react-native: ^0.77.0
   typescript: 5.8.3
   esbuild: ^0.24.2
-  unbuild: ^3.3.1
+  unbuild: ^3.6.1
   defu: ^6.1.4
-  jiti: ^2.4.2
-  verdaccio: 6.0.5
-  zx: ^8.3.2
+  jiti: ^2.5.1
+  verdaccio: 6.1.6
+  zx: ^8.8.0
 linkWorkspacePackages: true
 onlyBuiltDependencies:
   - "@swc/core"
