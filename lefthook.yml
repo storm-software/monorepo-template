@@ -8,21 +8,6 @@ colors: true
 no_tty: false
 min_version: 1.5.0
 
-pre-install:
-  commands:
-    validate:
-      glob: "**/*.*"
-      run: "pnpm exec storm-pre-install"
-
-prepare:
-  commands:
-    validate:
-      glob: "**/*.*"
-      run: "pnpm exec storm-prepare"
-    plugins:
-      glob: "**/*.*"
-      run: "pnpm exec zx tools/scripts/src/bootstrap.mjs"
-
 pre-commit:
   piped: true
   commands:
@@ -32,7 +17,7 @@ pre-commit:
       stage_fixed: true
     prepare:
       glob: "**/{lefthook.yml,biome.json}"
-      run: "pnpm exec storm-prepare"
+      run: pnpm exec storm-prepare
     validate:
       glob: "**/*"
       run: "pnpm exec storm-pre-commit {staged_files}"
@@ -58,27 +43,14 @@ pre-commit:
         - "*.scss"
         - "*.sass"
         - "*.less"
-        - "*.styl"
         - "*.stylus"
         - "*.graphql"
         - "*.gql"
         - "*.xml"
         - "*.svg"
-        - "*.txt"
-        - "*.log"
         - "*.env"
-        - "*.env.example"
-        - "*.env.local"
-        - "*.env.development"
-        - "*.env.test"
-        - "*.env.production"
-        - "*.env.staging"
-        - "*.env.local.example"
-        - "*.env.development.example"
-        - "*.env.test.example"
-        - "*.env.production.example"
-        - "*.env.staging.example"
-      run: "pnpm exec storm-lint all --skip-cspell --skip-circular-deps"
+        - ".env.{local,development,test,production,staging}"
+      run: pnpm exec storm-lint all --skip-cspell --skip-circular-deps
       stage_fixed: true
 
 commit-msg:
@@ -91,19 +63,23 @@ pre-push:
   commands:
     build:
       glob: "**/*"
-      run: "pnpm build-dev"
+      run: pnpm build
       stage_fixed: true
     validate:
       glob: "**/*"
       run: "pnpm exec storm-pre-push {staged_files}"
       stage_fixed: true
-    lint-filename:
+    pnpm-workspace:
       glob: "**/*"
-      run: 'pnpm exec ls-lint
-        --config="./node_modules/@storm-software/linting-tools/ls-lint/config.yml"'
+      run: "pnpm update --recursive --workspace"
+      stage_fixed: true
+    # lint-filename:
+    #   glob: "**/*"
+    #   run: 'pnpm exec ls-lint
+    #     --config="./node_modules/@storm-software/linting-tools/ls-lint/config.yml"'
     lint-codeowners:
       glob: "**/CODEOWNERS"
-      run: "pnpm exec storm-lint codeowners"
+      run: pnpm exec storm-lint codeowners
     lint-github-actions:
       glob: ".github/workflows/*.*"
       run: zizmor --offline --config="./tools/config/zizmor.yml" .github/workflows/
@@ -119,7 +95,7 @@ pre-push:
         - "*.tsx"
         - "*.json"
         - "*.jsonc"
-      run: "pnpm exec sherif -i typescript -i react -i react-dom"
+      run: pnpm exec sherif -i typescript -i react -i react-dom
       stage_fixed: true
     readme:
       glob: "**/*"
