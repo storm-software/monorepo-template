@@ -35,7 +35,7 @@ try {
     echo`${data}`;
   });
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while formatting the workspace's README file: \n\n${result.message}\n`
     );
@@ -49,7 +49,7 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while formatting the monorepo: \n\n${result.message}\n`
     );
@@ -63,13 +63,13 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while running \`nx format:write\` on the monorepo: \n\n${result.message}\n`
     );
   }
 
-  echo`${chalk.green("Successfully formatted the monorepo's files")}`;
+  echo`${chalk.green(" ✅  Successfully formatted the monorepo's files")}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while formatting the monorepo")}`;
 

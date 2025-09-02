@@ -41,7 +41,7 @@ try {
     echo`${data}`;
   });
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while building workspace packages: \n\n${result.message}\n`
     );
@@ -54,13 +54,13 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while releasing workspace packages: \n\n${result.message}\n`
     );
   }
 
-  echo`${chalk.green("Successfully released workspace packages")}`;
+  echo`${chalk.green(" ✅  Successfully released workspace packages")}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while releasing workspace packages")}`;
 

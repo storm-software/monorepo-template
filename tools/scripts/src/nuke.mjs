@@ -30,7 +30,7 @@ try {
   //   echo`${data}`;
   // });
   // let result = await proc;
-  // if (!result.ok) {
+  // if (result.exitCode !== 0) {
   //   throw new Error(
   //     `An error occurred while cleaning the monorepo projects: \n\n${result.message}\n`
   //   );
@@ -41,7 +41,7 @@ try {
     echo`${data}`;
   });
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while clearing Nx cache: \n\n${result.message}\n`
     );
@@ -54,7 +54,7 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while removing cache directories: \n\n${result.message}\n`
     );
@@ -65,7 +65,7 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while removing node modules and build directories from the monorepo's projects: \n\n${result.message}\n`
     );
@@ -76,7 +76,7 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while removing node modules and build directories from the monorepo's projects: \n\n${result.message}\n`
     );
@@ -87,13 +87,13 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while removing node modules and build directories from the monorepo's projects: \n\n${result.message}\n`
     );
   }
 
-  echo`${chalk.green("Successfully nuked the cache, node modules, and build folders \n\n")}`;
+  echo`${chalk.green(" ✅  Successfully nuked the cache, node modules, and build folders \n\n")}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while nuking the monorepo")}`;
 }

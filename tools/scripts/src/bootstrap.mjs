@@ -41,13 +41,13 @@ try {
   //     echo`${data}`;
   //   });
   //   const result = await proc;
-  //   if (!result.ok) {
+  //   if (result.exitCode !== 0) {
   //     throw new Error(
   //       `An error occurred while resetting the Nx daemon process: \n\n${result.message}\n`
   //     );
   //   }
 
-  echo`${chalk.green("Completed monorepo bootstrapping successfully!")}`;
+  echo`${chalk.green(" ✅  Completed monorepo bootstrapping successfully!")}`;
 } catch (error) {
   echo`${chalk.red(
     error?.message

@@ -40,7 +40,7 @@ try {
     echo`${data}`;
   });
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while bootstrapping the monorepo: \n\n${
         result.message
@@ -56,7 +56,7 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while building the monorepo in ${
         configuration
@@ -65,7 +65,7 @@ try {
   }
 
   echo`${chalk.green(
-    `Successfully built the monorepo in ${configuration} mode!`
+    ` ✅  Successfully built the monorepo in ${configuration} mode!`
   )}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while building the monorepo")}`;

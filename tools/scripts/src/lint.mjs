@@ -30,7 +30,7 @@ try {
     echo`${data}`;
   });
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while linting the monorepo: \n\n${result.message}\n`
     );
@@ -43,13 +43,13 @@ try {
     echo`${data}`;
   });
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while running \`storm-lint\` on the monorepo: \n\n${result.message}\n`
     );
   }
 
-  echo`${chalk.green("Successfully linted the monorepo's files")}`;
+  echo`${chalk.green(" ✅  Successfully linted the monorepo's files")}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while linting the monorepo")}`;
 

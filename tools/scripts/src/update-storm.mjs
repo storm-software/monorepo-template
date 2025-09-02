@@ -30,7 +30,7 @@ try {
     );
   proc.stdout.on("data", data => echo`${data}`);
   let result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while updating "@storm-software/*" packages:\n\n${result.message}\n`
     );
@@ -43,7 +43,7 @@ try {
   );
   proc.stdout.on("data", data => echo`${data}`);
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while updating "@stryke/*" packages:\n\n${result.message}\n`
     );
@@ -53,7 +53,7 @@ try {
   proc = $`pnpm dedupe`.timeout(`${8 * 60}s`);
   proc.stdout.on("data", data => echo`${data}`);
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while deduplicating workspace dependencies:\n\n${result.message}\n`
     );
@@ -63,13 +63,13 @@ try {
   proc = $`pnpm update --recursive --workspace`.timeout(`${8 * 60}s`);
   proc.stdout.on("data", data => echo`${data}`);
   result = await proc;
-  if (!result.ok) {
+  if (result.exitCode !== 0) {
     throw new Error(
       `An error occurred while refreshing workspace links:\n\n${result.message}\n`
     );
   }
 
-  echo`${chalk.green("  ✅ Successfully updated Storm Software package dependencies and re-linked workspace packages")}\n\n`;
+  echo`${chalk.green(" ✅  Successfully updated Storm Software package dependencies and re-linked workspace packages")}\n\n`;
 } catch (error) {
   echo`${chalk.red(
     error?.message ??
