@@ -58,7 +58,7 @@ catalog:
   defu: ^6.1.4
   jiti: ^2.4.2
   verdaccio: 6.0.5
-  zx: ^8.3.2
+  zx: ^8.8.5
 linkWorkspacePackages: true
 onlyBuiltDependencies:
   - "@swc/core"
