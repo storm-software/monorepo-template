@@ -53,12 +53,12 @@ catalog:
   react-dom: ^19.0.0
   react-native: ^0.77.0
   typescript: 5.8.3
-  esbuild: ^0.24.2
+  esbuild: ^0.25.0
   unbuild: ^3.3.1
   defu: ^6.1.4
   jiti: ^2.4.2
   verdaccio: 6.0.5
-  zx: ^8.3.2
+  zx: ^8.8.5
 linkWorkspacePackages: true
 onlyBuiltDependencies:
   - "@swc/core"
