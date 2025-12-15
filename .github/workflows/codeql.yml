@@ -37,8 +37,10 @@ jobs:
     #   - https://gh.io/supported-runners-and-hardware-resources
     #   - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
-    if: ${{ !contains(github.event.pull_request.labels.*.name, 'dependencies') }}
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    if:
+      ${{ !contains(github.event.pull_request.labels.*.name, 'dependencies') }}
+    runs-on:
+      ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
     timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
     permissions:
       actions: read
@@ -69,7 +71,7 @@ jobs:
           gpg-private-key: ${{ secrets.STORM_BOT_GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           package-manager: pnpm
-          package-manager-version: 10.3.0
+          package-manager-version: 10.24.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       # Initializes the CodeQL tools for scanning.

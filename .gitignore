@@ -26,15 +26,6 @@ node_modules
 .settings/
 *.sublime-workspace
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/cspell.json
-!.vscode/mcp.json
-
 # misc
 /.sass-cache
 /connect.lock

@@ -15,6 +15,10 @@ pre-commit:
       glob: "./{pnpm-lock.yaml,lefthook.yml}"
       run: "pnpm install && pnpm lefthook install"
       stage_fixed: true
+    nx-sync:
+      glob: "**/*"
+      run: "pnpm nx sync"
+      stage_fixed: true
     prepare:
       glob: "**/{lefthook.yml,biome.json}"
       run: pnpm exec storm-prepare
@@ -61,6 +65,10 @@ commit-msg:
 pre-push:
   piped: true
   commands:
+    nx-sync:
+      glob: "**/*"
+      run: "pnpm nx sync"
+      stage_fixed: true
     build:
       glob: "**/*"
       run: pnpm build
@@ -69,37 +77,13 @@ pre-push:
       glob: "**/*"
       run: "pnpm exec storm-pre-push {staged_files}"
       stage_fixed: true
-    pnpm-workspace:
-      glob: "**/*"
-      run: "pnpm update --recursive --workspace"
-      stage_fixed: true
-    # lint-filename:
-    #   glob: "**/*"
-    #   run: 'pnpm exec ls-lint
-    #     --config="./node_modules/@storm-software/linting-tools/ls-lint/config.yml"'
     lint-codeowners:
       glob: "**/CODEOWNERS"
       run: pnpm exec storm-lint codeowners
-    lint-github-actions:
-      glob: ".github/workflows/*.*"
-      run: zizmor --offline --config="./tools/config/zizmor.yml" .github/workflows/
-    sherif:
-      glob:
-        - "*.js"
-        - "*.ts"
-        - "*.cjs"
-        - "*.mjs"
-        - "*.d.cts"
-        - "*.d.mts"
-        - "*.jsx"
-        - "*.tsx"
-        - "*.json"
-        - "*.jsonc"
-      run: pnpm exec sherif -i typescript -i react -i react-dom
-      stage_fixed: true
     readme:
       glob: "**/*"
-      run: 'pnpm exec storm-git readme --templates="tools/readme-templates"
+      run:
+        'pnpm exec storm-git readme --templates="tools/readme-templates"
         --project="@monorepo-template/monorepo" '
       stage_fixed: true
     format:

@@ -96,6 +96,8 @@
   "prettier.ignorePath": "./node_modules/@storm-software/prettier/.prettierignore",
   "prettier.enableDebugLogs": false,
   "prettier.enable": true,
+  "evenBetterToml.taplo.configFile.enabled": true,
+  "evenBetterToml.taplo.configFile.path": "./node_modules/@storm-software/linting-tools/taplo/config.toml",
   "markdownlint.configFile": "./node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc",
   "eslint.debug": false,
   "eslint.codeAction.disableRuleComment": {

@@ -23,18 +23,15 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.24.0",
   "engines": {
     "node": ">=22.14.0",
-    "pnpm": ">=10.10.0"
+    "pnpm": ">=10.24.0"
   },
   "keywords": [
     "storm-software",
     "storm",
-    "storm-ops",
-    "sullivanpj",
-    "typescript",
-    "monorepo"
+    "sullivanpj"
   ],
   "scripts": {
     "adr": "pnpm log4brains adr new",
@@ -56,7 +53,6 @@
     "postinstall": "pnpm bootstrap",
     "push": "git push origin main:main",
     "release": "pnpm exec zx tools/scripts/src/release.mjs",
-    "sherif": "pnpm exec sherif -f -i typescript -i react -i react-dom",
     "start": "nx serve",
     "update-storm": "pnpm exec zx tools/scripts/src/update-storm.mjs",
     "view-config": "pnpm exec storm-config"
@@ -83,10 +79,6 @@
     "@storm-software/unbuild": "catalog:",
     "@storm-software/untyped": "catalog:",
     "@storm-software/workspace-tools": "catalog:",
-    "@swc-node/register": "catalog:",
-    "@swc/core": "catalog:",
-    "@swc/helpers": "catalog:",
-    "@taplo/cli": "catalog:",
     "@types/jest": "catalog:",
     "@types/node": "catalog:",
     "copyfiles": "catalog:",
@@ -99,10 +91,7 @@
     "nx": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",
-    "sherif": "catalog:",
     "ts-jest": "catalog:",
-    "ts-node": "catalog:",
-    "tslib": "catalog:",
     "typescript": "5.8.3",
     "verdaccio": "catalog:",
     "zx": "catalog:"
