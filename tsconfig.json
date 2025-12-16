@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Monorepo Template - Monorepo",
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "./tools/config"
+    },
+    {
+      "path": "./tools/scripts"
+    }
+  ],
+  "files": []
+}

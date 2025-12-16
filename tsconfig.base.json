@@ -3,12 +3,12 @@
   "extends": "@storm-software/tsconfig/core.json",
   "display": "Storm Software - TypeScript Monorepo",
   "compilerOptions": {
-    "baseUrl": ".",
-    "rootDir": ".",
-    "paths": {
-      "@monorepo-template/tools-scripts": ["tools/scripts/src/index.ts"],
-      "@monorepo-template/tools-scripts/*": ["tools/scripts/src/*"],
-      "@monorepo-template/tools-config/*": ["tools/config/*"]
-    }
+    "incremental": true,
+    "composite": true,
+    "types": ["node"],
+    "declaration": true,
+    "declarationMap": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true
   }
 }
