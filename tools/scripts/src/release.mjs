@@ -60,7 +60,7 @@ try {
     );
   }
 
-  echo`${chalk.green("✅  Successfully released workspace packages")}`;
+  echo`${chalk.green(" ✔ Successfully released workspace packages")}`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while releasing workspace packages")}`;
 
