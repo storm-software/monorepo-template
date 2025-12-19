@@ -9,8 +9,8 @@ on:
   push:
     branches:
       - main
-      - alpha
-      - beta
+      - next
+      - experimental
 
 env:
   CI: true
@@ -29,8 +29,8 @@ jobs:
       id-token: write
     if:
       github.repository == 'storm-software/monorepo-template' && (github.ref ==
-      'refs/heads/main' || github.ref == 'refs/heads/alpha' || github.ref ==
-      'refs/heads/beta')
+      'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
+      'refs/heads/experimental')
     steps:
       - name: Send notification - Deployment started
         uses: storm-software/action-notify@main
@@ -104,7 +104,8 @@ jobs:
 
       - name: Release repository updates
         run:
-          devenv shell release ${{ steps.setSHAs.outputs.base }} ${{ steps.setSHAs.outputs.head }}
+          devenv shell release ${{ steps.setSHAs.outputs.base }} ${{
+          steps.setSHAs.outputs.head }}
         env:
           NX_BASE: ${{ steps.setSHAs.outputs.base }}
           NX_HEAD: ${{ steps.setSHAs.outputs.head }}

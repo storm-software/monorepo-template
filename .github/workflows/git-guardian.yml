@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-      - alpha
-      - beta
+      - next
+      - experimental
   pull_request:
     branches:
       - "**"
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+          fetch-depth: 0
           persist-credentials: false
 
       - name: GitGuardian scan
