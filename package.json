@@ -23,8 +23,8 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "packageManager": "pnpm@10.26.0",
-  "engines": { "node": ">=22.14.0", "pnpm": ">=10.24.0" },
+  "packageManager": "pnpm@10.28.2",
+  "engines": { "node": ">=22.22.0", "pnpm": ">=10.28.2" },
   "keywords": ["storm-software", "storm", "sullivanpj"],
   "scripts": {
     "adr": "pnpm log4brains adr new",
