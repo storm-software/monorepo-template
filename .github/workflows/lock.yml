@@ -17,6 +17,7 @@ jobs:
   lock:
     name: 🔒 Lock closed issues and PRs
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: dessant/lock-threads@v5
         with:

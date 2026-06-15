@@ -13,6 +13,7 @@ jobs:
 
     name: stale
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: stale-more-info-needed
         id: stale-more-info-needed

@@ -20,14 +20,11 @@
 import { $, chalk, echo } from "zx";
 
 try {
-  await echo`${chalk.whiteBright("🔄  Updating the workspace's Storm Software dependencies and re-linking workspace packages...")}`;
+  await echo`${chalk.whiteBright(" 🔄 Updating the workspace's Storm Software dependencies and re-linking workspace packages...")}`;
 
   // 1) Update all @storm-software, @stryke, and @powerlines packages
   await echo`${chalk.whiteBright("Checking for storm-software, stryke, and powerlines updates...")}`;
-  let proc =
-    $`pnpm exec storm-pnpm update @storm-software/ @stryke/ @powerlines/ powerlines --install`.timeout(
-      `${8 * 60}s`
-    );
+  let proc = $`pnpm exec storm-pnpm update --all`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => echo`${data}`);
   let result = await proc;
   if (result.exitCode !== 0) {
@@ -37,7 +34,7 @@ try {
   }
 
   // 2) Dedupe all workspace dependencies
-  proc = $`pnpm dedupe`.timeout(`${8 * 60}s`);
+  proc = $`pnpm dedupe`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => echo`${data}`);
   result = await proc;
   if (result.exitCode !== 0) {
@@ -47,7 +44,7 @@ try {
   }
 
   // 3) Ensure workspace:* links are up to date
-  proc = $`pnpm update --recursive --workspace`.timeout(`${8 * 60}s`);
+  proc = $`pnpm update --recursive --workspace`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => echo`${data}`);
   result = await proc;
   if (result.exitCode !== 0) {
@@ -55,11 +52,22 @@ try {
       `An error occurred while refreshing workspace links:\n\n${result.message}\n`
     );
   }
+
+  // 4) Install git hooks to ensure that the correct versions of the CLI and other tools are used when running git commands
+  proc = $`pnpm exec storm-git prepare`.timeout(`${8 * 60}s`);
+  proc.stdout.on("data", data => echo`${data}`);
+  result = await proc;
+  if (result.exitCode !== 0) {
+    throw new Error(
+      `An error occurred while installing git hooks:\n\n${result.message}\n`
+    );
+  }
+
   echo`${chalk.green(" ✔ Successfully updated Storm Software package dependencies and re-linked workspace packages")}\n\n`;
 } catch (error) {
   echo`${chalk.red(
     error?.message ??
-      "A failure occurred while updating Stryke/Storm dependency packages"
+      "A failure occurred while updating Storm Software dependency packages"
   )}`;
   process.exit(1);
 }

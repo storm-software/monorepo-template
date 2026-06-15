@@ -32,7 +32,7 @@ try {
   }
 
   echo`${chalk.whiteBright(
-    `🏗️  Building the monorepo in ${configuration} mode...`
+    ` 🏗️  Building the monorepo in ${configuration} mode...`
   )}`;
 
   let proc = $`pnpm bootstrap`.timeout(`${1 * 60}s`);
@@ -48,10 +48,9 @@ try {
     );
   }
 
-  proc =
-    $`pnpm nx run-many --target=build --exclude="@monorepo-template/monorepo" --configuration=${
-      configuration
-    } --outputStyle=dynamic-legacy --parallel=5`.timeout(`${10 * 60}s`);
+  proc = $`pnpm nx run-many --target=build --exclude=monorepo --configuration=${
+    configuration
+  } --outputStyle=dynamic-legacy --parallel=5`.timeout(`${45 * 60}s`);
   proc.stdout.on("data", data => {
     echo`${data}`;
   });
@@ -66,7 +65,7 @@ try {
 
   echo`${chalk.green(
     ` ✔ Successfully built the monorepo in ${configuration} mode!`
-  )}`;
+  )}\n`;
 } catch (error) {
   echo`${chalk.red(error?.message ? error.message : "A failure occurred while building the monorepo")}`;
 

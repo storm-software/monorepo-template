@@ -14,6 +14,11 @@ rules:
       - git-guardian.yml
       - contributors.yml
       - codeql.yml
+      - dependabot-approval.yml
+      - security.yml
+      - security-reusable.yml
+      - schedule-stale.yml
+      - greetings.yml
   excessive-permissions:
     ignore:
       - release.yml

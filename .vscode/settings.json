@@ -1,39 +1,68 @@
 {
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "search.exclude": {
-    "**/bower_components": true,
-    "**/*.code-search": true,
-    "**/.tamagui": true,
-    "**/.next/**": true,
-    "**/.next-dev/**": true,
-    "**/dist/**": true,
-    "**/dist-dev/**": true,
-    "**/.docusaurus/**": true,
-    "**/CHANGELOG.json": true,
-    "docs/spec.html": true,
-    "**/node_modules/**": true,
-    "**/.tsbuildinfo": true,
-    "packages/compiler/templates/__snapshots__/**": true,
-    "packages/website/versioned_docs/**": true,
-    "packages/http-client-csharp/**/Generated/**": true,
-    "packages/samples/scratch/**": false // Those files are in gitignore but we still want to search for them
-  },
   "files.exclude": {
     "**/common/temp/**": true,
     "**/obj/**": true,
-    "**/bin/**": true,
-    "**/.git": true,
+    "**/bin/**": false,
+    "**/.git": false,
     "**/.DS_Store": true
   },
-  "relay.autoStartCompiler": true,
-  "relay.rootDirectory": "../",
-  "relay.pathToConfig": "../packages/graphql-tools/config/relay.config.js",
+  "files.associations": {
+    "*.hbs": "handlebars",
+    "*.acid": "acidic",
+    "*.acidic": "acidic",
+    "*.json": "jsonc"
+  },
+  "search.exclude": {
+    "**/.agents/**": true,
+    "**/.claude/**": true,
+    "**/.codex/**": true,
+    "**/.devenv": true,
+    "**/.devenv/**": true,
+    "**/.direnv/**": true,
+    "**/.docusaurus": true,
+    "**/.docusaurus/**": true,
+    "**/.git": true,
+    "**/.github/skills": true,
+    "**/.github/agents": true,
+    "**/.next": true,
+    "**/.next/**": true,
+    "**/.next-dev": true,
+    "**/.next-dev/**": true,
+    "**/.nx": true,
+    "**/.opencode/**": true,
+    "**/.tamagui": true,
+    "**/.tsbuildinfo": true,
+    "**/*.code-search": true,
+    "**/CHANGELOG.json": true,
+    "**/CHANGELOG.md": true,
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/dist/**": true,
+    "**/dist-dev": true,
+    "**/dist-dev/**": true,
+    "**/docs/spec.html": true,
+    "**/node_modules": true,
+    "**/node_modules/**": true,
+    "**/out": true,
+    "**/out-dev": true,
+    "**/out-tsc": true,
+    "**/public": true,
+    "**/public-dev": true,
+    "**/storybook-static": true,
+    "**/storybook-static-dev": true,
+    "**/temp": true,
+    "**/tmp": true,
+    "docs/spec.html": true,
+    "pnpm-lock.yaml": true
+  },
   "rust-analyzer.procMacro.ignored": {
     "napi-derive": ["napi"]
   },
   "nix.enableLanguageServer": true,
-  "nix.serverPath": "nixd", // or "nil"
+  "nix.serverPath": ["devenv", "lsp"],
   "nix.serverSettings": {
     // check https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md for all nixd config
     "nixd": {
@@ -81,8 +110,8 @@
     "statusBar.foreground": "#1fb2a6"
   },
   "peacock.color": "#1fb2a6",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.experimental.classRegex": [
     [
       "cva(?:<[^>]*>)?(([^)]*))",
@@ -92,14 +121,13 @@
   ],
   "prettier.requireConfig": true,
   "prettier.bracketSameLine": true,
-  "prettier.configPath": "./node_modules/@storm-software/prettier/config.json",
+  "prettier.configPath": "./node_modules/@storm-software/prettier/recommended.json",
   "prettier.ignorePath": "./node_modules/@storm-software/prettier/.prettierignore",
   "prettier.enableDebugLogs": false,
   "prettier.enable": true,
-  "evenBetterToml.taplo.configFile.enabled": true,
-  "evenBetterToml.taplo.configFile.path": "./node_modules/@storm-software/linting-tools/taplo/config.toml",
-  "markdownlint.configFile": "./node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc",
-  "eslint.debug": false,
+  "markdownlint.configFile": "./node_modules/@storm-software/markdownlint/config/recommended.markdownlint-cli2.jsonc",
+  "eslint.debug": true,
+  "eslint.useRealpaths": true,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"
@@ -108,6 +136,7 @@
     "enable": true
   },
   "eslint.useFlatConfig": true,
+  "eslint.format.enable": true,
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.tabCompletion": "on",
@@ -117,17 +146,11 @@
     "source.organizeImports": "never"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "files.associations": {
-    "*.hbs": "handlebars",
-    "*.acid": "acidic",
-    "*.acidic": "acidic"
-  },
   "[javascript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
-      "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
   },
@@ -136,16 +159,14 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
-      "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
   },
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
-      "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
   },
@@ -154,21 +175,20 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
-      "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
   },
   "[json]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[jsonc]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[markdown]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     "editor.formatOnPaste": true
   },
   "[mdx]": {
@@ -208,8 +228,24 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[nix]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "brettm12345.nixfmt-vscode"
+  },
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
   "commitizen.showOutputChannel": "always",
-  "nxConsole.generateAiAgentRules": true
+  "nxConsole.generateAiAgentRules": true,
+  "terminal.integrated.shellIntegration.enabled": true,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "chat.mcp.gallery.enabled": true,
+  "chat.useAgentSkills": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  }
 }

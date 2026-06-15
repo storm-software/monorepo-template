@@ -17,25 +17,45 @@
 
  ------------------------------------------------------------------- */
 
-import { $, chalk, echo } from "zx";
+import { $, argv, chalk, echo } from "zx";
 
 try {
-  await echo`${chalk.whiteBright("📋  Linting the monorepo...")}`;
+  echo`${chalk.whiteBright(" 📋  Linting the monorepo...")}`;
+
+  let filesArg = "--all";
+  let filesList = "";
+  if (argv._ && argv._.length > 0) {
+    filesList = argv._.join(" ");
+    filesArg = `--files ${argv._.join(",")}`;
+  }
 
   let proc =
-    $`pnpm nx run-many --target=lint --all --exclude="@monorepo-template/monorepo" --outputStyle=dynamic-legacy --parallel=5`.timeout(
-      `${30 * 60}s`
-    );
+    $`pnpm exec eslint --fix --quiet --color --no-error-on-unmatched-pattern --config ./eslint.config.mjs --cache --cache-location ./node_modules/.cache/eslint --concurrency auto ${
+      filesList || "packages/**"
+    }`.timeout(`${30 * 60}s`);
   proc.stdout.on("data", data => {
     echo`${data}`;
   });
   let result = await proc;
   if (result.exitCode !== 0) {
     throw new Error(
-      `An error occurred while linting the monorepo: \n\n${result.message}\n`
+      `An error occurred while running ESLint on the monorepo: \n\n${result.message}\n`
     );
   }
 
+  proc =
+    $`pnpm nx run-many --target=lint ${filesArg} --exclude=monorepo --outputStyle=dynamic-legacy --parallel=5`.timeout(
+      `${30 * 60}s`
+    );
+  proc.stdout.on("data", data => {
+    echo`${data}`;
+  });
+  result = await proc;
+  if (result.exitCode !== 0) {
+    throw new Error(
+      `An error occurred while linting the monorepo: \n\n${result.message}\n`
+    );
+  }
   proc = $`pnpm exec storm-lint all --skip-cspell --skip-circular-deps`.timeout(
     `${30 * 60}s`
   );

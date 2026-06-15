@@ -14,6 +14,7 @@ jobs:
   scanning:
     name: GitGuardian scan
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -25,8 +26,8 @@ jobs:
         uses: GitGuardian/ggshield/actions/secret@v1.39.0
         with:
           args:
-            "--exclude pnpm-lock.yaml --exclude tools/config/verdaccio.yml
-            --exclude nx.json"
+            "--exclude pnpm-lock.yaml --exclude tools/config/verdaccio.yml --exclude
+            nx.json"
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}

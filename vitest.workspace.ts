@@ -16,10 +16,7 @@
 
  ------------------------------------------------------------------- */
 
-export * from "./bootstrap.mjs";
-export * from "./build.mjs";
-export * from "./format.mjs";
-export * from "./lint.mjs";
-export * from "./nuke.mjs";
-export * from "./release.mjs";
-export * from "./update-storm.mjs";
+export default [
+  "**/vite.config.{mjs,js,ts,mts}",
+  "**/vitest.config.{mjs,js,ts,mts}"
+];
