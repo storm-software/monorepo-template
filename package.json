@@ -28,7 +28,12 @@
     "node": ">=26.3.0",
     "pnpm": ">=11.1.2"
   },
-  "keywords": ["storm-software", "template", "github-template", "monorepo"],
+  "keywords": [
+    "storm-software",
+    "template",
+    "github-template",
+    "monorepo"
+  ],
   "scripts": {
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
